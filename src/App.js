@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css';
+import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from "react-redux";
 import store from "./store";
@@ -23,8 +23,8 @@ function App() {
               <Route path='/about' element={<About/>} />
               <Route path='/contact' element={<Contact/>} />
           </Routes >
-        </div>
         <Footer/>
+        </div>
       </BrowserRouter>
     </Provider>
   );

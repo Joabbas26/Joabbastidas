@@ -3,7 +3,7 @@ $breakpoint: 799px;
 $nav-height: 70px;
 $nav-background: #fff;
 $nav-font-color: #0c0c0c;
-$link-hover-color: #f8b500;
+$link-hover-color: #f80000;
 
 .navigation {
   height: $nav-height;
@@ -16,17 +16,13 @@ $link-hover-color: #f8b500;
 }
 
 .brand {
-  position: absolute;
-  padding-left: 20px;
-  float: left;
+  // position: absolute;
+  // float: left;
   line-height: $nav-height;
   text-transform: uppercase;
   font-size: 1.4em;
-
-  a, a:visited {
-    color: $nav-font-color;
-    text-decoration: none;
-  }
+  text-decoration: none;
+  color: $nav-font-color;
 }
 
 nav {

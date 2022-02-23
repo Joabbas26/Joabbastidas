@@ -6,10 +6,10 @@ export default function Nav() {
   return (
     <div className='NavDiv'>
         <div className="nav-container">
-            <div className="brand"><NavLink to="/" className="active">Joab Bastidas</NavLink></div>
+            <NavLink to="/" className="brand">Joab Bastidas</NavLink>
             <nav>
                 <div className="nav-mobile">
-                    <a id="nav-toggle" href="#!"><span></span></a>
+                    <button id="nav-toggle" href="#!"><span></span></button>
                 </div>
                 <ul className="nav-list">
                     <li><Link to="/projects">Projects</Link></li>
