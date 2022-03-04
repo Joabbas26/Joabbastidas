@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import WebFont from "webfontloader";
+
+WebFont.load({
+  google: {
+      families: ['Poppins', "Courier New:700","Roboto:400,700","Tangerine:700","Lato:400"]
+  }
+});
 
 ReactDOM.render(
   <React.StrictMode>

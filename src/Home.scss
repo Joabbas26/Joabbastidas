@@ -1,0 +1,102 @@
+.HomeDiv{
+    height: 100vh;
+}
+
+.grayTextDiv{
+  background-color: #798086;
+  border-radius: 10px;
+  max-height: 60vh;
+  max-width: 60vw;
+  margin: 0 auto;
+  padding: 1rem 0 5rem 0;
+}
+  
+.homeTitle {
+  color: #ffffff;
+  font-size: 40px;
+  font-family: Roboto;
+  font-weight: 700;
+  margin-bottom: 58px;
+  text-align: center;
+}
+
+.textsDiv{
+  margin-bottom: 6.4px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.8px;
+  padding-right: 1.8px;
+}
+
+.devText {
+  color: #ffffff;
+  text-align: center;
+  font-size: 20px;
+  font-family: Lato;
+  font-weight: 400;
+  margin-bottom: 8px;
+  align-self: center;
+}
+
+.artText{
+  color: #f62828;
+  text-align: center;
+  font-size: 40px;
+  font-family: Tangerine;
+  font-weight: 700;
+  margin-top: 9px;    
+}
+
+.iconDiv{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.novelText{
+  color: #ffffff;
+  font-size: 30px;
+  font-family: Courier New;
+  font-weight: 700;
+  align-self: center;    
+}
+
+.gamesText{
+  color: #ffffff;
+  text-align: center;
+  font-size: 30px;
+  font-family: Roboto;
+  font-weight: 700;
+}
+
+.mangaText{
+  font-size: 40px;
+  color: #121111;
+  font-family: Roboto;
+  font-weight: 400;
+  text-align: center;
+}
+
+.mangaSubText{
+  font-size: 12px;
+  color: #ffffff;
+  font-family: Roboto;
+  font-weight: 400;
+  text-align: center;
+}
+
+.circleBackground{
+    width: 41rem;
+    height: 41rem;
+    position: absolute;
+    top: 9.5rem;
+    left: 5.5rem;
+  }
+  
+  .circleImage{
+    height: 40rem;
+    position: absolute;
+    top: 10rem;
+    left: 6rem;
+  }
+
