@@ -1,0 +1,60 @@
+.contactTitle{
+    color: #0d6efd;
+    text-align: center;
+    font-size: 40px;
+  font-family: Roboto;
+  font-weight: 700;
+    margin: 3rem 0;
+    margin-bottom: 58px;
+}
+
+#contactMainForm{
+    background-color: #798086;
+    border-radius: 10px;
+    max-height: 60vh;
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+#contactForm{
+    background-color: #ffffff;
+    border-radius: 10px 0 0 10px;
+    padding: 3rem 2rem;
+  }
+
+label{
+    padding: .5rem 0;
+}
+
+#submitButton{
+    margin: 1rem 0;
+    float: right;
+    box-shadow: 3px 3px rgb(72, 148, 255);
+}
+
+.contactInfo{
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    padding: 2rem 0;
+}
+
+.emailInfo, .instagramInfo, .twitterInfo{
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.numberInfo{
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-around;
+    gap: 5rem;
+}
+
+.linkedInInfo{
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
