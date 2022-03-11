@@ -1,0 +1,49 @@
+.aboutDiv{
+    position: relative;
+}
+
+.circle{
+    position: fixed;
+    bottom: -10rem;
+    left: 5rem;
+    box-sizing:border-box;
+    height: 65rem;
+    width: 65rem;
+    background-color: gray;
+    border-radius: 50%;
+    transform: translate(-20%, 20%);
+    overflow: hidden;
+}
+
+.aboutTitle{
+    margin: 3rem 0;
+    text-align: center;
+    color: #ffffff;
+    font-size: 3rem;
+    font-family: Roboto;
+    font-weight: 700;
+    margin-bottom: 5rem;
+}
+
+#currentProjects, #selfDescription{
+    text-align: center;
+    color: white;
+    z-index: 1;
+    padding: 4rem;
+}
+
+#currentProjects p:first-child{
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0 0 2rem 0;
+}
+
+#currentProjects p:not(:first-child), #selfDescription{
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    #currentProjects, #selfDescription{
+      padding: 3rem;
+    }
+  }
