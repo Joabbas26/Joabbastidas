@@ -11,8 +11,6 @@
 #contactMainForm{
     background-color: #798086;
     border-radius: 10px;
-    max-height: 60vh;
-    max-width: 80rem;
     margin: 0 auto;
   }
 
@@ -40,20 +38,20 @@ label{
 }
 
 .emailInfo, .instagramInfo, .twitterInfo{
-    font-size: 1.2rem;
+    font-size: 1rem;
     display: flex;
     justify-content: space-around;
 }
 
 .numberInfo{
-    font-size: 1.2rem;
+    font-size: 1rem;
     display: flex;
     justify-content: space-around;
     gap: 5rem;
 }
 
 .linkedInInfo{
-    font-size: 1.2rem;
+    font-size: 1rem;
     display: flex;
     justify-content: space-evenly;
     gap: 1rem;
