@@ -1,0 +1,40 @@
+.tableTitle{
+    color: #0d6efd;
+    text-align: center;
+    font-size: 40px;
+    font-family: Roboto;
+    font-weight: 700;
+    margin: 3rem 0;
+    margin-bottom: 58px;
+}
+
+/* Table Div */
+.table-responsive {
+    padding: 3rem 6rem 0 6rem;
+   }
+   
+   /* Table Element */
+   .table{
+     text-align: center;
+     background-color: white;
+   }
+   
+   /* Edit Icon */
+   .edit{
+     color:rgb(2, 115, 207)
+   }
+   
+   /* Delete Icon */
+   .delete {
+     color: red;
+   }
+   
+   /* Add Row Icon */
+   .addRow{
+     color: green;
+   }
+   
+   /* All Icons */
+   #icon{
+     cursor: pointer;
+   }

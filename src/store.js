@@ -1,8 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import rootReducer from './reducers/rootReducer'
+import EditModalSlice from './reducers/EditModalSlice';
+import ModalSlice from './reducers/ModalSlice'
+import NewRowSlice from './reducers/NewRowSlice'
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    modal: ModalSlice,
+    newRow: NewRowSlice,
+    editModal: EditModalSlice,
+  },
 })
 
 export default store;
