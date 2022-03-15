@@ -27,7 +27,7 @@ export default function Home() {
                 <p className='artText'>Artist</p>
                 <p className= 'gamesText'>Games</p>
                 <p className='mangaText'> 漫画 </p>
-                <p className='novelText'>Novelist</p>
+                <p className='novelText anim-typewriter'>Novelist</p>
               </div>
               <div className='col-md-1 col-sm-6' id='iconDiv'>
                   <a href='https://www.amazon.com/'><FontAwesomeIcon icon={faAmazon}/></a>
