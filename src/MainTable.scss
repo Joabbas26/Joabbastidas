@@ -38,3 +38,11 @@
    #icon{
      cursor: pointer;
    }
+
+   /* Modal Section */
+.modal {
+  display: none;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.178);
+  color: black;
+}
