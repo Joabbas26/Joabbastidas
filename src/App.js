@@ -7,7 +7,7 @@ import Nav from "./Nav.js";
 import Home from './Home.js';
 import Projects from './Projects.js';
 import MainTable from './MainTable.js';
-import WeatherApp from './WeatherApp';
+import WeatherApp from './WeatherApp.js';
 import About from './About.js';
 import Contact from './Contact.js';
 import Footer from "./Footer.js";
