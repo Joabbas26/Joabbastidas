@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 import './WeatherApp.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export default function WeatherApp() {
 
-const [city, setCity] = useState('');
+const [city, setCity] = useState('newyork');
 const [temp, setTemp] = useState('');
 const [weather, setWeather] = useState("");
-const [results, setResults] = useState({});
+const [results, setResults] = useState('');
 
 
   const getTodaysDate = (d) => {
@@ -86,3 +86,4 @@ const [results, setResults] = useState({});
     </div>
   )
 }
+
