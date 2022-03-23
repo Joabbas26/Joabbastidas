@@ -1,4 +1,52 @@
+$blue-color: #0d6efd;
+
 .weatherApp{
     height: 100%;
     background-color: black;
 }
+
+.searchField {
+    width: 30rem;
+    margin: 0 auto;
+    display: flex;
+  }
+  
+.searchInput{
+    width: 100%;
+    border: 3px solid $blue-color;
+    border-right: none;
+    height: auto;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+  }
+  
+  .searchInput:focus{
+    color: $blue-color;
+  }
+  
+  .searchButton {
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid $blue-color;
+    background: $blue-color;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  /*Resize the wrap to see the search bar change!*/
+  .wrap{
+    margin: 3rem 0;
+  }
+
+#weatherContainer{
+  background: #798086;
+  border-radius: 10px;
+  max-height: 60vh;
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 2rem 2rem;
+}
+

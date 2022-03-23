@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import './WeatherApp.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCloud, faCloudRain, faSun, faMoon, faCloudSun, faCloudBolt, faWind, faSnowflake } from '@fortawesome/free-solid-svg-icons';
 
 export default function WeatherApp() {
 
-const [city, setCity] = useState('newyork');
+const [city, setCity] = useState('');
 const [temp, setTemp] = useState('');
 const [weather, setWeather] = useState("");
 const [results, setResults] = useState('');
@@ -44,11 +44,13 @@ const [results, setResults] = useState('');
     return `${day} ${date} ${month} ${year}`;
   }
 
+  var Time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" });
+
   // Make an account to get api key
   const API_KEY = [1234];
   const API_BASE_URL = 'http://api.openweathermap.org/';
 
-  const searchWeather = () => {
+  const searchWeather = (e) => {
     // Get weather from api
     fetch(
       `${API_BASE_URL}/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
@@ -64,26 +66,33 @@ const [results, setResults] = useState('');
 
   return (
     <div className='weatherApp'>
-      <div className='container-fluid'>
-        <div className='row'>
-          <input type="text" className="search-bar" placeholder="Enter your city" 
-          onChange={e => setCity(e.target.value)} value={city}/>
-          <FontAwesomeIcon icon={faSearch} onClick={searchWeather}/>
-        </div>
+      <div className='wrap'>
+        <form onSubmit={searchWeather}> 
+          <div className="searchField"> 
+            <input type="search" name="search" required placeholder="Enter Your City" 
+            className='searchInput' onChange={e => setCity(e.target.value)}/>
+            <button type="search" className="searchButton">
+            <FontAwesomeIcon icon={faSearch} onClick={searchWeather}/> 
+            </button>
+          </div>
+        </form>
       </div>
       
-      <div className='container' id="weather-container">
+      <div className='container' id="weatherContainer">
          <div className="weather">
-           <div className="temp">`${temp}`</div>
-           <div className="condition">`${weather}`</div>
-           <div className="city">`${city}`</div>
-           <div className="city">`${results}`</div>
-           <br/>
-         <div className="date">{getTodaysDate(new Date())}</div>
-         <br/>
+           <div className="city">{city}</div>
+           <div className='row' id='tempInfo'>
+            <div className='col' id="condition">{weather}</div>
+            <div className='col' id="temperature">{temp}</div>
+           <div className='dateAndTime'>
+             <div className="time">{Time}</div>
+             <div className='date'>{getTodaysDate(new Date())}</div>
+           </div>
+         </div>
         </div>
       </div>
     </div>
   )
 }
 
+// onChange={e => setCity(e.target.value)} 
