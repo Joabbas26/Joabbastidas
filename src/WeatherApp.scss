@@ -1,4 +1,5 @@
 $blue-color: #0d6efd;
+$gray-color: #798086;
 
 .weatherApp{
     height: 100%;
@@ -18,6 +19,7 @@ $blue-color: #0d6efd;
     height: auto;
     border-radius: 5px 0 0 5px;
     outline: none;
+    padding: 0 1rem;
   }
   
   .searchInput:focus{
@@ -42,11 +44,49 @@ $blue-color: #0d6efd;
   }
 
 #weatherContainer{
-  background: #798086;
+  background: #6c9fcc;
   border-radius: 10px;
   max-height: 60vh;
-  max-width: 80vw;
+  max-width: 70vw;
   margin: 0 auto;
   padding: 2rem 2rem;
 }
 
+.city{
+  text-align: center;
+  font-size: 3rem;
+  color: #fff;
+  font-family: Courier, monospace;
+  font-weight: bold;
+}
+
+#tempInfo{
+  margin: 2rem 0;
+}
+
+#condition{
+  text-align: center;
+  color: white;
+}
+
+#temperature{
+  color: #fff;
+  font-size: 6rem;
+  padding-left: 24px;
+  font-weight: bolder;
+}
+
+.dateAndTime{
+  margin: 1rem 2rem;
+}
+
+.time{
+  font-size: 3.5rem;
+  color: #fff;
+  font-weight:400;
+}
+
+.date{
+  font-size: 1.25rem;
+  color: #fff;
+}

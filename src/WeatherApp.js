@@ -5,9 +5,9 @@ import { faSearch, faCloud, faCloudRain, faSun, faMoon, faCloudSun, faCloudBolt,
 
 export default function WeatherApp() {
 
-const [city, setCity] = useState('');
-const [temp, setTemp] = useState('');
-const [weather, setWeather] = useState("");
+const [city, setCity] = useState('New York');
+const [temp, setTemp] = useState('25°F');
+const [weather, setWeather] = useState("Partly Cloudy");
 const [results, setResults] = useState('');
 
 
@@ -64,13 +64,44 @@ const [results, setResults] = useState('');
       .then((results) => setResults(results));
   }
 
+  const selectCondition = () => {
+    const condition = [
+      'Cloudy',
+      'Raining',
+      'Windy',
+      'Partly Cloudy',
+      'Sunny',
+      'Snowing',
+      'Thunder',
+      'Night'
+    ];
+
+    const iconCondition = [
+      'faCloud',
+      'faCloudRain',
+      'faWind',
+      'faCloudSun',
+      'faSun',
+      'faSnowflake',
+      'faCloudBolt',
+      'faMoon'
+    ];
+
+    for(var i = 0; i < condition.length; i++){
+      if(weather === condition[i]){
+          return <FontAwesomeIcon icon={iconCondition[i]} size='10x'/>
+      }
+    }
+    
+  }
+
   return (
     <div className='weatherApp'>
       <div className='wrap'>
         <form onSubmit={searchWeather}> 
           <div className="searchField"> 
             <input type="search" name="search" required placeholder="Enter Your City" 
-            className='searchInput' onChange={e => setCity(e.target.value)}/>
+            className='searchInput' onInput={e => setCity(e.target.value)}/>
             <button type="search" className="searchButton">
             <FontAwesomeIcon icon={faSearch} onClick={searchWeather}/> 
             </button>
@@ -82,13 +113,17 @@ const [results, setResults] = useState('');
          <div className="weather">
            <div className="city">{city}</div>
            <div className='row' id='tempInfo'>
-            <div className='col' id="condition">{weather}</div>
-            <div className='col' id="temperature">{temp}</div>
+            <div className='col-md-8' id="condition">
+              <FontAwesomeIcon icon={faCloud} size='10x'/>
+              <p>{weather}</p>
+              {/* {selectCondition(weather)} */}
+            </div>
+            <div className='col-md-4' id="temperature">{temp}</div>
+           </div>
            <div className='dateAndTime'>
              <div className="time">{Time}</div>
              <div className='date'>{getTodaysDate(new Date())}</div>
            </div>
-         </div>
         </div>
       </div>
     </div>

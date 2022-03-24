@@ -19,7 +19,7 @@ export default function Projects() {
           </div>
         </div>
         <div className='col' id='card'>
-        <Link to="/weather"><img className='img-fluid' id='projectImage' src={"https://play-lh.googleusercontent.com/zoAQwsds7P2exgVXFUiV8faEmblggMeZ59pILSa9B1cCYwHD7PFExvHhdDZCvW1enpEY"} 
+        <Link to="/weather"><img className='img-fluid' id='projectImage' src={"https://images-na.ssl-images-amazon.com/images/I/81K-NehZ++L.png"} 
           alt="projectImage"/></Link>
           <div className="card-body">
             <h5 className="card-title">Weather API</h5>
