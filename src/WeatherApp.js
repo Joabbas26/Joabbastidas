@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import './WeatherApp.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faCloud, faCloudRain, faSun, faMoon, faCloudSun, faCloudBolt, faWind, faSnowflake } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCloud, faCloudRain, faSun, faMoon, faCloudSun, faBoltLightning, faWind, faSnowflake } from '@fortawesome/free-solid-svg-icons';
 
 export default function WeatherApp() {
 
-const [city, setCity] = useState('New York');
-const [temp, setTemp] = useState('25°F');
-const [weather, setWeather] = useState("Partly Cloudy");
+const [city, setCity] = useState('Los Angeles');
+const [temp, setTemp] = useState('50');
+const [weather, setWeather] = useState("Sunny");
 const [results, setResults] = useState('');
 
 
@@ -46,19 +46,21 @@ const [results, setResults] = useState('');
 
   var Time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" });
 
-  // Make an account to get api key
-  const API_KEY = [1234];
-  const API_BASE_URL = 'http://api.openweathermap.org/';
+  // api key and base url
+  const api = {
+    key: "3fabe9fdca16afb5e55e69008aee39d3",
+    base: "https://api.openweathermap.org/data/2.5/"
+  }
 
-  const searchWeather = (e) => {
+  const searchWeather = () => {
     // Get weather from api
     fetch(
-      `${API_BASE_URL}/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
+      `${api.base}forecast?q=${city}&appid=${api.key}`
     )
       .then((response) => {
         response.json();
-        setWeather(response);
-        setTemp("");
+        setWeather(response.weather.main);
+        setTemp(response.main.temp);
       })
       // update the results
       .then((results) => setResults(results));
@@ -77,14 +79,14 @@ const [results, setResults] = useState('');
     ];
 
     const iconCondition = [
-      'faCloud',
-      'faCloudRain',
-      'faWind',
-      'faCloudSun',
-      'faSun',
-      'faSnowflake',
-      'faCloudBolt',
-      'faMoon'
+      faCloud,
+      faCloudRain,
+      faWind,
+      faCloudSun,
+      faSun,
+      faSnowflake,
+      faBoltLightning,
+      faMoon
     ];
 
     for(var i = 0; i < condition.length; i++){
@@ -101,9 +103,9 @@ const [results, setResults] = useState('');
         <form onSubmit={searchWeather}> 
           <div className="searchField"> 
             <input type="search" name="search" required placeholder="Enter Your City" 
-            className='searchInput' onInput={e => setCity(e.target.value)}/>
-            <button type="search" className="searchButton">
-            <FontAwesomeIcon icon={faSearch} onClick={searchWeather}/> 
+            className='searchInput'/>
+            <button type="submit" className="searchButton">
+            <FontAwesomeIcon icon={faSearch} onClick={e => setCity(e.target.value)}/> 
             </button>
           </div>
         </form>
@@ -114,11 +116,10 @@ const [results, setResults] = useState('');
            <div className="city">{city}</div>
            <div className='row' id='tempInfo'>
             <div className='col-md-8' id="condition">
-              <FontAwesomeIcon icon={faCloud} size='10x'/>
+              {selectCondition(weather)}
               <p>{weather}</p>
-              {/* {selectCondition(weather)} */}
             </div>
-            <div className='col-md-4' id="temperature">{temp}</div>
+            <div className='col-md-4' id="temperature">{temp + '°F'}</div>
            </div>
            <div className='dateAndTime'>
              <div className="time">{Time}</div>
