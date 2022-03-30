@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './WeatherApp.scss'
+import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCloud, faCloudRain, faSun, faMoon, faCloudSun, faBoltLightning, faWind, faSnowflake } from '@fortawesome/free-solid-svg-icons';
 
@@ -52,18 +53,26 @@ const [results, setResults] = useState('');
     base: "https://api.openweathermap.org/data/2.5/"
   }
 
-  const searchWeather = () => {
-    // Get weather from api
+  const searchWeather = (city) => {
+    // Get weather from 
+    /*
     fetch(
-      `${api.base}forecast?q=${city}&appid=${api.key}`
+      `${api.base}weather?q=${city}&appid=${api.key}`
     )
       .then((response) => {
         response.json();
-        setWeather(response.weather.main);
-        setTemp(response.main.temp);
+        var results = JSON.parse(response);
+        setWeather(results.weather[0].main);
+        setTemp(results.main.temp);
       })
       // update the results
       .then((results) => setResults(results));
+      */
+      // Axios fetch
+      axios.get(`${api.base}weather?q=${city}&appid=${api.key}`).then((response) => {
+        setResults(response.results);
+      })
+      setCity('');
   }
 
   const selectCondition = () => {
@@ -93,33 +102,39 @@ const [results, setResults] = useState('');
       if(weather === condition[i]){
           return <FontAwesomeIcon icon={iconCondition[i]} size='10x'/>
       }
-    }
-    
+    }  
   }
 
   return (
     <div className='weatherApp'>
       <div className='wrap'>
-        <form onSubmit={searchWeather}> 
+        {/* <form onSubmit={searchWeather}>  */}
           <div className="searchField"> 
             <input type="search" name="search" required placeholder="Enter Your City" 
-            className='searchInput'/>
+            className='searchInput' onChange={e => setCity(e.target.value)}/>
             <button type="submit" className="searchButton">
-            <FontAwesomeIcon icon={faSearch} onClick={e => setCity(e.target.value)}/> 
+            <FontAwesomeIcon icon={faSearch} onSubmit={searchWeather}/> 
             </button>
           </div>
-        </form>
+        {/* </form> */}
       </div>
       
       <div className='container' id="weatherContainer">
          <div className="weather">
-           <div className="city">{city}</div>
+           <div className="city">
+             {city}
+             {/* <p>{results.name}</p> */}
+             </div>
            <div className='row' id='tempInfo'>
             <div className='col-md-8' id="condition">
               {selectCondition(weather)}
+              {/* {results.weather ? <p>{results.weather[0].main}</p> : null} */}
               <p>{weather}</p>
             </div>
-            <div className='col-md-4' id="temperature">{temp + '°F'}</div>
+            <div className='col-md-4' id="temperature">
+              {temp + '°F'}
+              {/* {results.main ? <h1>{results.main.temp.toFixed()}°F</h1> : null} */}
+              </div>
            </div>
            <div className='dateAndTime'>
              <div className="time">{Time}</div>
