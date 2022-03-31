@@ -2,14 +2,12 @@ import React, {useState} from 'react';
 import './WeatherApp.scss'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faCloud, faCloudRain, faSun, faMoon, faCloudSun, faBoltLightning, faWind, faSnowflake } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCloud, faCloudRain, faSun, faMoon, faCloudSun, faBoltLightning, faWind, faSnowflake, faCloudShowersHeavy } from '@fortawesome/free-solid-svg-icons';
 
 export default function WeatherApp() {
 
-const [city, setCity] = useState('Los Angeles');
-const [temp, setTemp] = useState('50');
-const [weather, setWeather] = useState("Sunny");
-const [results, setResults] = useState('');
+const [city, setCity] = useState('');
+const [results, setResults] = useState({});
 
 
   const getTodaysDate = (d) => {
@@ -53,54 +51,61 @@ const [results, setResults] = useState('');
     base: "https://api.openweathermap.org/data/2.5/"
   }
 
-  const searchWeather = (city) => {
+  const searchWeather = () => {
     // Get weather from 
-    /*
     fetch(
-      `${api.base}weather?q=${city}&appid=${api.key}`
+      `${api.base}weather?q=${city}&units=imperial&appid=${api.key}`
     )
-      .then((response) => {
-        response.json();
-        var results = JSON.parse(response);
-        setWeather(results.weather[0].main);
-        setTemp(results.main.temp);
-      })
+      .then(response => response.json())
       // update the results
-      .then((results) => setResults(results));
-      */
-      // Axios fetch
-      axios.get(`${api.base}weather?q=${city}&appid=${api.key}`).then((response) => {
+      .then(results => {
+        setResults(results);
+      })
+      .catch(error => console.log(error))
+      setCity('');
+      
+      /* 
+      axios.get(`${api.base}weather?q=${city}&units=imperial&appid=${api.key}`).then((response) => {
         setResults(response.results);
+        console.log(response.results);
       })
       setCity('');
+      */
   }
 
   const selectCondition = () => {
     const condition = [
-      'Cloudy',
-      'Raining',
-      'Windy',
+      'Clouds',
+      'Fog',
+      'Mist',
+      'Rain',
+      'Heavy Rain',
+      'Wind',
       'Partly Cloudy',
-      'Sunny',
-      'Snowing',
+      'Sun',
+      'Clear',
+      'Snow',
       'Thunder',
       'Night'
     ];
 
     const iconCondition = [
       faCloud,
+      faCloud,
+      faCloud,
       faCloudRain,
+      faCloudShowersHeavy,
       faWind,
       faCloudSun,
+      faSun,
       faSun,
       faSnowflake,
       faBoltLightning,
       faMoon
     ];
-
     for(var i = 0; i < condition.length; i++){
-      if(weather === condition[i]){
-          return <FontAwesomeIcon icon={iconCondition[i]} size='10x'/>
+      if(results.weather[0].main === condition[i]){  
+        return <FontAwesomeIcon icon={iconCondition[i]} size='10x'/>
       }
     }  
   }
@@ -111,9 +116,9 @@ const [results, setResults] = useState('');
         {/* <form onSubmit={searchWeather}>  */}
           <div className="searchField"> 
             <input type="search" name="search" required placeholder="Enter Your City" 
-            className='searchInput' onChange={e => setCity(e.target.value)}/>
+            className='searchInput' value={city} onChange={e => setCity(e.target.value)}/>
             <button type="submit" className="searchButton">
-            <FontAwesomeIcon icon={faSearch} onSubmit={searchWeather}/> 
+            <FontAwesomeIcon icon={faSearch} onClick={searchWeather}/> 
             </button>
           </div>
         {/* </form> */}
@@ -122,18 +127,18 @@ const [results, setResults] = useState('');
       <div className='container' id="weatherContainer">
          <div className="weather">
            <div className="city">
-             {city}
-             {/* <p>{results.name}</p> */}
+             {/* {city} */}
+             <p>{results.name}</p>
              </div>
            <div className='row' id='tempInfo'>
             <div className='col-md-8' id="condition">
-              {selectCondition(weather)}
-              {/* {results.weather ? <p>{results.weather[0].main}</p> : null} */}
-              <p>{weather}</p>
+              {results.weather ? selectCondition() : null}
+              {results.weather ? <p>{results.weather[0].main}</p> : null}
+              {/* <p>{weather}</p> */}
             </div>
             <div className='col-md-4' id="temperature">
-              {temp + '°F'}
-              {/* {results.main ? <h1>{results.main.temp.toFixed()}°F</h1> : null} */}
+              {/* {temp + '°F'} */}
+              {results.main ? <p>{results.main.temp.toFixed()}°F</p> : null}
               </div>
            </div>
            <div className='dateAndTime'>
@@ -146,4 +151,8 @@ const [results, setResults] = useState('');
   )
 }
 
-// onChange={e => setCity(e.target.value)} 
+/*
+
+
+      
+*/
