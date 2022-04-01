@@ -7,7 +7,7 @@ import { faSearch, faCloud, faCloudRain, faSun, faMoon, faCloudSun, faBoltLightn
 export default function WeatherApp() {
 
 const [city, setCity] = useState('');
-const [results, setResults] = useState({});
+const [data, setData] = useState({});
 
 
   const getTodaysDate = (d) => {
@@ -51,26 +51,15 @@ const [results, setResults] = useState({});
     base: "https://api.openweathermap.org/data/2.5/"
   }
 
-  const searchWeather = () => {
-    // Get weather from 
-    fetch(
-      `${api.base}weather?q=${city}&units=imperial&appid=${api.key}`
-    )
-      .then(response => response.json())
-      // update the results
-      .then(results => {
-        setResults(results);
+  const searchWeather = async () => {
+    // Get weather from api
+      await axios.get(`${api.base}weather?q=${city}&units=imperial&appid=${api.key}`)
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
       })
       .catch(error => console.log(error))
       setCity('');
-      
-      /* 
-      axios.get(`${api.base}weather?q=${city}&units=imperial&appid=${api.key}`).then((response) => {
-        setResults(response.results);
-        console.log(response.results);
-      })
-      setCity('');
-      */
   }
 
   const selectCondition = () => {
@@ -104,7 +93,7 @@ const [results, setResults] = useState({});
       faMoon
     ];
     for(var i = 0; i < condition.length; i++){
-      if(results.weather[0].main === condition[i]){  
+      if(data.weather[0].main === condition[i]){  
         return <FontAwesomeIcon icon={iconCondition[i]} size='10x'/>
       }
     }  
@@ -128,17 +117,17 @@ const [results, setResults] = useState({});
          <div className="weather">
            <div className="city">
              {/* {city} */}
-             <p>{results.name}</p>
+             <p>{data.name}</p>
              </div>
            <div className='row' id='tempInfo'>
             <div className='col-md-8' id="condition">
-              {results.weather ? selectCondition() : null}
-              {results.weather ? <p>{results.weather[0].main}</p> : null}
+              {data.weather ? selectCondition() : null}
+              {data.weather ? <p>{data.weather[0].main}</p> : null}
               {/* <p>{weather}</p> */}
             </div>
             <div className='col-md-4' id="temperature">
               {/* {temp + '°F'} */}
-              {results.main ? <p>{results.main.temp.toFixed()}°F</p> : null}
+              {data.main ? <p>{data.main.temp.toFixed()}°F</p> : null}
               </div>
            </div>
            <div className='dateAndTime'>
@@ -153,6 +142,15 @@ const [results, setResults] = useState({});
 
 /*
 
-
+    fetch(
+      `${api.base}weather?q=${city}&units=imperial&appid=${api.key}`
+    )
+      .then(response => response.json())
+      // update the results
+      .then(results => {
+        setResults(results);
+      })
+      .catch(error => console.log(error))
+      setCity('');
       
 */
