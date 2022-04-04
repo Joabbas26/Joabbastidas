@@ -9,7 +9,6 @@ export default function WeatherApp() {
 const [city, setCity] = useState('');
 const [data, setData] = useState({});
 
-
   const getTodaysDate = (d) => {
     const months = [
       'January',
@@ -44,6 +43,9 @@ const [data, setData] = useState({});
   }
 
   var Time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" });
+  var hour = new Date().getHours();
+
+ 
 
   // api key and base url
   const api = {
@@ -92,8 +94,13 @@ const [data, setData] = useState({});
       faBoltLightning,
       faMoon
     ];
+
     for(var i = 0; i < condition.length; i++){
-      if(data.weather[0].main === condition[i]){  
+      console.log(hour);
+      if(parseInt(hour) >= 19){
+        return<FontAwesomeIcon icon={faMoon} size='10x'/>
+      }
+      else if(data.weather[0].main === condition[i]){  
         return <FontAwesomeIcon icon={iconCondition[i]} size='10x'/>
       }
     }  
