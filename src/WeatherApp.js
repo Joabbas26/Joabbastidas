@@ -8,6 +8,7 @@ export default function WeatherApp() {
 
 const [city, setCity] = useState('');
 const [data, setData] = useState({});
+// const [description, setDescription] = useState();
 
   const getTodaysDate = (d) => {
     const months = [
@@ -95,12 +96,29 @@ const [data, setData] = useState({});
       faMoon
     ];
 
+    const betterCondition = [
+      'Cloudy',
+      'Fog',
+      'Mist',
+      'Raining',
+      'Heavy Rain',
+      'Windy',
+      'Partly Cloudy',
+      'Sunny',
+      'Sunny',
+      'Snowing',
+      'Lightning',
+      'Night'
+    ]
+
     for(var i = 0; i < condition.length; i++){
       console.log(hour);
       if(parseInt(hour) >= 19){
+        // setDescription('Night Time');
         return<FontAwesomeIcon icon={faMoon} size='10x'/>
       }
       else if(data.weather[0].main === condition[i]){  
+        // setDescription(betterCondition[i]);
         return <FontAwesomeIcon icon={iconCondition[i]} size='10x'/>
       }
     }  
@@ -109,7 +127,6 @@ const [data, setData] = useState({});
   return (
     <div className='weatherApp'>
       <div className='wrap'>
-        {/* <form onSubmit={searchWeather}>  */}
           <div className="searchField"> 
             <input type="search" name="search" required placeholder="Enter Your City" 
             className='searchInput' value={city} onChange={e => setCity(e.target.value)}/>
@@ -117,23 +134,20 @@ const [data, setData] = useState({});
             <FontAwesomeIcon icon={faSearch} onClick={searchWeather}/> 
             </button>
           </div>
-        {/* </form> */}
       </div>
       
       <div className='container' id="weatherContainer">
          <div className="weather">
            <div className="city">
-             {/* {city} */}
              <p>{data.name}</p>
              </div>
            <div className='row' id='tempInfo'>
             <div className='col-md-8' id="condition">
               {data.weather ? selectCondition() : null}
               {data.weather ? <p>{data.weather[0].main}</p> : null}
-              {/* <p>{weather}</p> */}
+              {/* {data.weather ? <p>{description}</p> : null} */}
             </div>
             <div className='col-md-4' id="temperature">
-              {/* {temp + '°F'} */}
               {data.main ? <p>{data.main.temp.toFixed()}°F</p> : null}
               </div>
            </div>
@@ -149,15 +163,5 @@ const [data, setData] = useState({});
 
 /*
 
-    fetch(
-      `${api.base}weather?q=${city}&units=imperial&appid=${api.key}`
-    )
-      .then(response => response.json())
-      // update the results
-      .then(results => {
-        setResults(results);
-      })
-      .catch(error => console.log(error))
-      setCity('');
       
 */
