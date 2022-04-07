@@ -8,7 +8,6 @@ export default function WeatherApp() {
 
 const [city, setCity] = useState('');
 const [data, setData] = useState({});
-// const [description, setDescription] = useState();
 
   const getTodaysDate = (d) => {
     const months = [
@@ -45,6 +44,7 @@ const [data, setData] = useState({});
 
   var Time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" });
   var hour = new Date().getHours();
+  var description = '';
 
  
 
@@ -114,14 +114,14 @@ const [data, setData] = useState({});
     for(var i = 0; i < condition.length; i++){
       console.log(hour);
       if(parseInt(hour) >= 19){
-        // setDescription('Night Time');
-        return<FontAwesomeIcon icon={faMoon} size='10x'/>
+        description = 'Night';
+        return <FontAwesomeIcon icon={faMoon} size='10x'/>
       }
       else if(data.weather[0].main === condition[i]){  
-        // setDescription(betterCondition[i]);
+        description = betterCondition[i];
         return <FontAwesomeIcon icon={iconCondition[i]} size='10x'/>
       }
-    }  
+    }
   }
 
   return (
@@ -144,8 +144,8 @@ const [data, setData] = useState({});
            <div className='row' id='tempInfo'>
             <div className='col-md-8' id="condition">
               {data.weather ? selectCondition() : null}
-              {data.weather ? <p>{data.weather[0].main}</p> : null}
-              {/* {data.weather ? <p>{description}</p> : null} */}
+              {/* {data.weather ? <p>{data.weather[0].main}</p> : null} */}
+              {data.weather ? <p>{description}</p> : null}
             </div>
             <div className='col-md-4' id="temperature">
               {data.main ? <p>{data.main.temp.toFixed()}°F</p> : null}
