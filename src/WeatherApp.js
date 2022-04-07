@@ -43,7 +43,7 @@ const [data, setData] = useState({});
   }
 
   var Time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" });
-  var hour = new Date().getHours();
+  // var hour = new Date().getHours();
   var description = '';
 
  
@@ -64,6 +64,8 @@ const [data, setData] = useState({});
       .catch(error => console.log(error))
       setCity('');
   }
+
+  var hour = data.timezone;
 
   const selectCondition = () => {
     const condition = [
