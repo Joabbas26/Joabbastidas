@@ -42,16 +42,16 @@
 }
 
 .content{
-  position: absolute;
-  top: auto;
-  left: 57%;
-  transform: translate(-50%, -50%);
-  height: 160px;
+  // position: absolute;
+  // top: auto;
+  transform: translate(0%, -50%);
+  // height: 160px;
   overflow: hidden;
   font-family: 'Lato', sans-serif;
   font-size: 35px;
   line-height: 40px;
   color: #ecf0f1;
+  margin: 0 0 1rem 0;
   
   &__container {
     font-weight: 600;
@@ -61,13 +61,12 @@
 
     &:before {
       content: '[';
-      left: 0;
+      transform: translateX(-3rem);
     }
 
     &:after {
       content: ']';
-      position: absolute;
-      right: 0;
+      transform: translateX(4rem);
     }
 
     &:after, &:before {
