@@ -53,6 +53,10 @@
   color: #ecf0f1;
   margin: 0 0 1rem 0;
   
+  &__container:hover{
+    cursor: pointer;
+  }
+
   &__container {
     font-weight: 600;
     overflow: hidden;
@@ -84,6 +88,8 @@
       animation-duration: 2s;
       animation-iteration-count: infinite;
     }
+
+    
 
     &__list {
       margin-top: 0;
@@ -199,6 +205,10 @@
   62%{
     transform: translate(-22px,5px) skew(21deg); 
   }
+}
+
+.novelText:hover{
+  cursor: pointer;
 }
 
 .novelText{

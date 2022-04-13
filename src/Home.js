@@ -16,7 +16,7 @@ export default function Home() {
               <div className='col-md-7 col-sm-6' id='textsDiv'>
                 <div className="content" id='devText'>
                   <div className="content__container">
-                    <ul className="content__container__list">
+                    <ul className="content__container__list" onClick={event =>  window.location.href='/projects#webDevSection'}>
                       <li className="content__container__list__item">HTML</li>
                       <li className="content__container__list__item">CSS</li>
                       <li className="content__container__list__item">JavaScript</li>
@@ -24,10 +24,10 @@ export default function Home() {
                     </ul>
                   </div>
                 </div>
-                <p className='artText'>Artist</p>
-                <p className= 'gamesText'>Games</p>
-                <p className='mangaText'> 漫画 </p>
-                <p className='novelText anim-typewriter'>Novelist</p>
+                <p className='artText' onClick={event =>  window.location.href='/projects'}>Artist</p>
+                <p className= 'gamesText' onClick={event =>  window.location.href='/projects'}>Games</p>
+                <p className='mangaText' onClick={event =>  window.location.href='/projects'}> 漫画 </p>
+                <p className='novelText anim-typewriter' onClick={event =>  window.location.href='/projects'}>Novelist</p>
               </div>
               <div className='col-md-1 col-sm-6' id='iconDiv'>
                   <a href='https://www.amazon.com/'><FontAwesomeIcon icon={faAmazon}/></a>
