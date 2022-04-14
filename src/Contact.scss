@@ -40,19 +40,21 @@ label{
 .emailInfo, .instagramInfo, .twitterInfo{
     font-size: 1rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .numberInfo{
     font-size: 1rem;
     display: flex;
-    justify-content: space-around;
-    gap: 5rem;
+    // gap: 1rem;
+    //justify-content: center;
+    justify-content: space-evenly;
 }
 
 .linkedInInfo{
     font-size: 1rem;
     display: flex;
-    justify-content: space-evenly;
     gap: 1rem;
+    justify-content: center;
 }

@@ -8,8 +8,8 @@ export default function Projects() {
     <div className='projectsDiv'>
       <p className='projectsTitle'>Projects</p>
       {/* Web projects */}
-      <p className='webDevTitle'>Full Stack</p>
-      <div className='container' id='webDevSection'>
+      <p className='projectTitle' id='webDevSection'>Full Stack</p>
+      <div className='container' id='projectsSection'>
         <div className='row'>
           <div className='col' id='card'>
           <Link to="/mainTable"><img className='img-fluid' id='projectImage' src={"https://media.geeksforgeeks.org/wp-content/uploads/20200405130022/TableCreation.png"} 
@@ -31,8 +31,8 @@ export default function Projects() {
         
       </div>
       {/* Art projects */}
-      <p className='webDevTitle'>Art</p>
-      <div className='container' id='webDevSection'>
+      <p className='projectTitle' id='artSection'>Art</p>
+      <div className='container' id='projectsSection'>
         <div className='row'>
           <div className='col' id='card'>
           <Link to="/mainTable"><img className='img-fluid' id='projectImage' src={"https://media.geeksforgeeks.org/wp-content/uploads/20200405130022/TableCreation.png"} 
@@ -54,8 +54,8 @@ export default function Projects() {
       </div>
 
       {/* Game projects */}
-      <p className='webDevTitle'>Games</p>
-      <div className='container' id='webDevSection'>
+      <p className='projectTitle' id='gamesSection'>Games</p>
+      <div className='container' id='projectsSection'>
         <div className='row'>
           <div className='col' id='card'>
           <Link to="/mainTable"><img className='img-fluid' id='projectImage' src={"https://media.geeksforgeeks.org/wp-content/uploads/20200405130022/TableCreation.png"} 
@@ -77,8 +77,8 @@ export default function Projects() {
       </div>
 
       {/* Manga projects */}
-      <p className='webDevTitle'>Manga</p>
-        <div className='container' id='webDevSection'>
+      <p className='projectTitle' id='mangaSection'>Manga</p>
+        <div className='container' id='projectsSection'>
           <div className='row'>
             <div className='col' id='card'>
             <Link to="/mainTable"><img className='img-fluid' id='projectImage' src={"https://media.geeksforgeeks.org/wp-content/uploads/20200405130022/TableCreation.png"} 
@@ -100,8 +100,8 @@ export default function Projects() {
         </div>
 
       {/* Books projects */}
-      <p className='webDevTitle'>Books</p>
-      <div className='container' id='webDevSection'>
+      <p className='projectTitle' id='booksSection'>Books</p>
+      <div className='container' id='projectsSection'>
         <div className='row'>
           <div className='col' id='card'>
           <Link to="/mainTable"><img className='img-fluid' id='projectImage' src={"https://media.geeksforgeeks.org/wp-content/uploads/20200405130022/TableCreation.png"} 
