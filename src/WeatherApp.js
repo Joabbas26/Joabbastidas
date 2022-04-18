@@ -54,9 +54,9 @@ const [data, setData] = useState({});
     base: "https://api.openweathermap.org/data/2.5/"
   }
 
-  const searchWeather = async () => {
+  const searchWeather = () => {
     // Get weather from api
-      await axios.get(`${api.base}weather?q=${city}&units=imperial&appid=${api.key}`)
+      axios.get(`${api.base}weather?q=${city}&units=imperial&appid=${api.key}`)
       .then((response) => {
         setData(response.data);
         console.log(response.data);
