@@ -33,7 +33,7 @@ export default function Projects() {
       {/* Art projects */}
       <p className='projectTitle' id='artSection'>Art</p>
       <div className='container' id='projectsSection'>
-        <div className='row'>
+        <div className='row' id='commingSoon'>
           Comming Soon!
         </div>
       </div>
@@ -41,7 +41,7 @@ export default function Projects() {
       {/* Game projects */}
       <p className='projectTitle' id='gamesSection'>Games</p>
       <div className='container' id='projectsSection'>
-        <div className='row'>
+        <div className='row' id='commingSoon'>
           Comming Soon!
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function Projects() {
       {/* Manga projects */}
       <p className='projectTitle' id='mangaSection'>Manga</p>
         <div className='container' id='projectsSection'>
-          <div className='row'>
+          <div className='row' id='commingSoon'>
             Comming Soon!
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function Projects() {
       {/* Books projects */}
       <p className='projectTitle' id='booksSection'>Books</p>
       <div className='container' id='projectsSection'>
-        <div className='row'>
+        <div className='row' id='commingSoon'>
           Comming Soon!
         </div>
       </div>

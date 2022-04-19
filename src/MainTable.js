@@ -121,18 +121,19 @@ export default function MainTable() {
 
     // Handles edit of table row
     const openEditHandler = (e) => {
+        editModalHandler();
         const rowIndex = parseInt(e.target.parentNode.parentNode.id);
         let rowCounter = 1;
         // loop over values
         for (let value of Object.values(newRow)) {
             if (rowCounter === rowIndex) {
-                alert(JSON.stringify(value.fName)); 
+                // alert(JSON.stringify(value.fName)); 
                 setFirstName(value.fName);
-                setLastName(value.lastName);
-                setCompanyTime(value.companyTime);
-                setOverTime(value.overTime);
-                setFullTime(value.fullTime);
-                setRecommendation(value.recommendation);
+                setLastName(value.lName);
+                setCompanyTime(value.compTime);
+                setOverTime(value.oTime);
+                setFullTime(value.fTime);
+                setRecommendation(value.recomm);
             }
             // wont work on row delete 
             rowCounter += 1;
@@ -148,7 +149,10 @@ export default function MainTable() {
     // Edit button in row
     const editIcon = () => {
         return(
-            <PencilSquare className='edit' id='icon' style={{height:30, width:50}} onClick={e => openEditHandler(e)}/>
+            <PencilSquare className='edit' id='icon' style={{height:30, width:50}} 
+            // onClick={editModalHandler}
+            onClick={e => openEditHandler(e)}
+            />
         )
     }
 
@@ -212,6 +216,8 @@ export default function MainTable() {
             <Button variant="primary" type="submit" onClick={handleSubmit}>Save</Button>
         </Modal.Footer>
     </Modal>
+
+
             <Modal className='modal' onHide={modalHandler} show={isOpen}>
                 <Modal.Header>
                     <Modal.Title>Employee Evaluation</Modal.Title>
@@ -270,6 +276,7 @@ export default function MainTable() {
                     <Button variant="primary" type="submit" onClick={handleSubmit}>Save</Button>
                 </Modal.Footer>
             </Modal>
+
             <h1 className='tableTitle'>Employee Ranking</h1>
             <div className="table-responsive">
                     <table className="table table-bordered">
