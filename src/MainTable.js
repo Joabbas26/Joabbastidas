@@ -1,4 +1,6 @@
 import React, { useState, useRef } from 'react';
+// import * as yup from 'yup';
+// import { formik, ErrorMessage } from 'formik';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
@@ -12,6 +14,8 @@ import './MainTable.scss';
 import { toggleEdit } from './reducers/EditModalSlice';
 import { addRow, deleteRow, saveRow } from './reducers/NewRowSlice';
 import { v4 as uuidv4 } from 'uuid';
+
+
 
 export default function MainTable() {
 
@@ -29,6 +33,7 @@ export default function MainTable() {
     const [overTime, setOverTime] = useState('');
     const [fullTime, setFullTime] = useState('');
     const [recommendation, setRecommendation] = useState('');
+    const [inputStyle, setInputStyle] = useState({});
 
      // Used to toggle modal show and hide
      const editModalHandler = () => {
@@ -105,8 +110,8 @@ export default function MainTable() {
    const handleSubmit = (e) => {
        e.preventDefault();
        if(firstName === ''){
-        // Switch with proper for validator
-        alert('Cannot leave field empty')
+        // Add text description
+        setInputStyle({border: 'solid red 1px'})
        }
        else{
         dispatch(toggle());
@@ -122,6 +127,7 @@ export default function MainTable() {
            recomm: recommendation,
            total : totalRef.current,
        }));  
+       setInputStyle({border: 'solid #ced4da 1px'});
        }
        
    }
@@ -177,7 +183,7 @@ export default function MainTable() {
                     <Form.Group as={Col} controlId="formGridFirstName">
                     <Form.Label>First Name</Form.Label>
                     <Form.Control type="text" placeholder="First Name" 
-                    value={firstName} onInput={e => setFirstName(e.target.value)}/>
+                    value={firstName} onInput={e => setFirstName(e.target.value)} style={inputStyle}/>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridLastName">
@@ -237,7 +243,7 @@ export default function MainTable() {
                             <Form.Group as={Col} controlId="formGridFirstName">
                             <Form.Label>First Name</Form.Label>
                             <Form.Control type="text" placeholder="First Name"
-                            value={firstName} onInput={e => setFirstName(e.target.value)} />
+                            value={firstName} onInput={e => setFirstName(e.target.value)}  style={inputStyle}/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridLastName">
@@ -326,17 +332,14 @@ export default function MainTable() {
 
 /*
 
-const { Formik } = formik;
+  const { Formik } = formik;
 
 const schema = yup.object().shape({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
-  username: yup.string().required(),
-  city: yup.string().required(),
-  state: yup.string().required(),
-  zip: yup.string().required(),
   terms: yup.bool().required().oneOf([true], 'Terms must be accepted'),
 });
+
 
 function FormExample() {
   return (
