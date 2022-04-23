@@ -34,6 +34,7 @@ export default function MainTable() {
     const [fullTime, setFullTime] = useState('');
     const [recommendation, setRecommendation] = useState('');
     const [inputStyle, setInputStyle] = useState({});
+    const [textValidationStyle, setTexValidationStyle] = useState({});
 
      // Used to toggle modal show and hide
      const editModalHandler = () => {
@@ -111,7 +112,8 @@ export default function MainTable() {
        e.preventDefault();
        if(firstName === ''){
         // Add text description
-        setInputStyle({border: 'solid red 1px'})
+        setInputStyle({border: 'solid red 1px'});
+        setTexValidationStyle({fontSize:'.4rem', color: 'red', display: 'block'})
        }
        else{
         dispatch(toggle());
@@ -128,6 +130,7 @@ export default function MainTable() {
            total : totalRef.current,
        }));  
        setInputStyle({border: 'solid #ced4da 1px'});
+       setTexValidationStyle({display: 'none'});
        }
        
    }
@@ -184,6 +187,7 @@ export default function MainTable() {
                     <Form.Label>First Name</Form.Label>
                     <Form.Control type="text" placeholder="First Name" 
                     value={firstName} onInput={e => setFirstName(e.target.value)} style={inputStyle}/>
+                    <p style={textValidationStyle}>Cannot be left blank</p>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridLastName">
@@ -244,6 +248,7 @@ export default function MainTable() {
                             <Form.Label>First Name</Form.Label>
                             <Form.Control type="text" placeholder="First Name"
                             value={firstName} onInput={e => setFirstName(e.target.value)}  style={inputStyle}/>
+                            <p style={textValidationStyle}>Cannot be left blank</p>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridLastName">
