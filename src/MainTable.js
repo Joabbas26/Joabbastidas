@@ -1,6 +1,4 @@
 import React, { useState, useRef } from 'react';
-// import * as yup from 'yup';
-// import { formik, ErrorMessage } from 'formik';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
@@ -12,21 +10,20 @@ import { CloseButton } from 'react-bootstrap';
 import { Trash, PencilSquare, PlusSquare } from 'react-bootstrap-icons';
 import './MainTable.scss';
 import { toggleEdit } from './reducers/EditModalSlice';
-import { addRow, deleteRow, saveRow } from './reducers/NewRowSlice';
+import { addRow, deleteRow } from './reducers/NewRowSlice';
+import { saveRow } from './reducers/EditRowSlice';
 import { v4 as uuidv4 } from 'uuid';
 
 
-
 export default function MainTable() {
-
-    // Use dispatch declaration and modal, dark mode state from redux
+    // Use dispatch declaration and modal state from redux
     const newRow = useSelector((state) => state.newRow);
+    const editRow = useSelector((state) => state.editRow);
     const isOpen = useSelector((state) => state.modal.value);
     const editIsOpen = useSelector((state) => state.editModal.value);
     const dispatch = useDispatch();
 
     // Hooks for all row values
-    //const [rowNumber, setRowNumber] = useState(1);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [companyTime, setCompanyTime] = useState('');
@@ -34,7 +31,7 @@ export default function MainTable() {
     const [fullTime, setFullTime] = useState('');
     const [recommendation, setRecommendation] = useState('');
     const [inputStyle, setInputStyle] = useState({});
-    const [textValidationStyle, setTexValidationStyle] = useState({});
+    const [textValidationStyle, setTexValidationStyle] = useState({ display: 'none'});
 
      // Used to toggle modal show and hide
      const editModalHandler = () => {
@@ -92,9 +89,17 @@ export default function MainTable() {
            totalRef.current = calcTotal;
   }
 
-  const handleEditSubmit = () => {
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    if(firstName === ''){
+     // Add text description
+     setInputStyle({border: 'solid red 1px'});
+     setTexValidationStyle({fontSize:'.4rem', color: 'red', display: 'block'})
+    }
+    else{
+    dispatch(toggleEdit());
     getRowTotal();
-    // Adds input data to row
+     // Adds input data to row
     dispatch(saveRow({
         //rowNum: rowNumber,
         fName : firstName,
@@ -105,6 +110,9 @@ export default function MainTable() {
         recomm: recommendation,
         total : totalRef.current,
     }));  
+    setInputStyle({border: 'solid #ced4da 1px'});
+    setTexValidationStyle({display: 'none'});
+    }
 }
 
    // Handles adding user data to table
@@ -151,7 +159,6 @@ export default function MainTable() {
                 setFullTime(value.fTime);
                 setRecommendation(value.recomm);
             }
-            // wont work on row delete 
             rowCounter += 1;
         }
     }
@@ -184,7 +191,7 @@ export default function MainTable() {
             <Form onSubmit={handleEditSubmit} action="../../post" method="post">
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridFirstName">
-                    <Form.Label>First Name</Form.Label>
+                    <Form.Label>First Name*</Form.Label>
                     <Form.Control type="text" placeholder="First Name" 
                     value={firstName} onInput={e => setFirstName(e.target.value)} style={inputStyle}/>
                     <p style={textValidationStyle}>Cannot be left blank</p>
@@ -230,7 +237,7 @@ export default function MainTable() {
         </Modal.Body>
 
         <Modal.Footer>
-            <Button variant="primary" type="submit" onClick={handleSubmit}>Save</Button>
+            <Button variant="primary" type="submit" onClick={handleEditSubmit}>Save</Button>
         </Modal.Footer>
     </Modal>
 
@@ -245,7 +252,7 @@ export default function MainTable() {
                     <Form onSubmit={handleSubmit} action="../../post" method="post">
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridFirstName">
-                            <Form.Label>First Name</Form.Label>
+                            <Form.Label>First Name*</Form.Label>
                             <Form.Control type="text" placeholder="First Name"
                             value={firstName} onInput={e => setFirstName(e.target.value)}  style={inputStyle}/>
                             <p style={textValidationStyle}>Cannot be left blank</p>

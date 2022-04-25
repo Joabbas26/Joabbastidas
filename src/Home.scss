@@ -27,6 +27,13 @@
   padding: 0;
 }
 
+#circleImage{
+  object-fit: cover;
+  border-radius: 50%;
+  height: 20rem;
+  width: 20rem;
+}
+
 #textsDiv{
   display: flex;
   flex-direction: column;
