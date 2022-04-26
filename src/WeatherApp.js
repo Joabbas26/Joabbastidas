@@ -9,7 +9,7 @@ export default function WeatherApp() {
 const [city, setCity] = useState('');
 const [data, setData] = useState({});
 
-  const getTodaysDate = (d) => {
+  const getTodaysDate = async (d) => {
     const months = [
       'January',
       'February',
@@ -35,10 +35,10 @@ const [data, setData] = useState({});
       'Sunday'
     ];
  
-    var day = days[d.getDay()]; // Fetches the day of the week
-    var date = d.getDate(); // Fetches the date i.e. 1st - 31st day of the month
-    var month = months[d.getMonth()]; // Fetches the month
-    var year = d.getFullYear();
+    var day = await days[d.getDay()]; // Fetches the day of the week
+    var date = await d.getDate(); // Fetches the date i.e. 1st - 31st day of the month
+    var month = await months[d.getMonth()]; // Fetches the month
+    var year = await d.getFullYear();
     return `${day} ${date} ${month} ${year}`;
   }
 

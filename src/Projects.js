@@ -1,6 +1,9 @@
 import React from 'react'
 import './Projects.scss'
 import { Link } from 'react-router-dom';
+import snakeEaters from './Images/snakeEaters.png';
+import employeeTable from './Images/EmployeeRanking.png';
+import weatherApp from './Images/WeatherApp.png';
 
 
 export default function Projects() {
@@ -12,7 +15,7 @@ export default function Projects() {
       <div className='container' id='projectsSection'>
         <div className='row'>
           <div className='col' id='card'>
-          <Link to="/mainTable"><img className='img-fluid' id='projectImage' src={"https://media.geeksforgeeks.org/wp-content/uploads/20200405130022/TableCreation.png"} 
+          <Link to="/mainTable"><img className='img-fluid' id='projectImage' src={employeeTable} 
           alt="projectImage"/></Link>
           <div className="card-body">
             <h5 className="card-title">Rank Table</h5>
@@ -20,7 +23,7 @@ export default function Projects() {
           </div>
         </div>
         <div className='col' id='card'>
-        <Link to="/weather"><img className='img-fluid' id='projectImage' src={"https://images-na.ssl-images-amazon.com/images/I/81K-NehZ++L.png"} 
+        <Link to="/weather"><img className='img-fluid' id='projectImage' src={weatherApp} 
           alt="projectImage"/></Link>
           <div className="card-body">
             <h5 className="card-title">Weather API</h5>
@@ -41,8 +44,13 @@ export default function Projects() {
       {/* Game projects */}
       <p className='projectTitle' id='gamesSection'>Games</p>
       <div className='container' id='projectsSection'>
-        <div className='row' id='commingSoon'>
-          Comming Soon!
+        <div className='row'>
+          <div className='col-md-6'>
+            <a href='https://apps.apple.com/us/app/snakeeaters/id1574034388'>
+              <img className='img-fluid' id='projectImage' src={snakeEaters} alt="projectImage" style={{borderRadius: '10px'}}/>
+            </a>
+          </div>
+         
         </div>
       </div>
 
