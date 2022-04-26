@@ -9,7 +9,7 @@ export default function WeatherApp() {
 const [city, setCity] = useState('');
 const [data, setData] = useState({});
 
-  const getTodaysDate = async (d) => {
+  const getTodaysDate = (d) => {
     const months = [
       'January',
       'February',
@@ -35,10 +35,10 @@ const [data, setData] = useState({});
       'Sunday'
     ];
  
-    var day = await days[d.getDay()]; // Fetches the day of the week
-    var date = await d.getDate(); // Fetches the date i.e. 1st - 31st day of the month
-    var month = await months[d.getMonth()]; // Fetches the month
-    var year = await d.getFullYear();
+    var day = days[d.getDay()]; // Fetches the day of the week
+    var date = d.getDate(); // Fetches the date i.e. 1st - 31st day of the month
+    var month = months[d.getMonth()]; // Fetches the month
+    var year = d.getFullYear();
     return `${day} ${date} ${month} ${year}`;
   }
 
@@ -54,7 +54,7 @@ const [data, setData] = useState({});
     base: "https://api.openweathermap.org/data/2.5/"
   }
 
-  const searchWeather = async () => {
+  async function searchWeather () {
     // Get weather from api
       await axios.get(`${api.base}weather?q=${city}&units=imperial&appid=${api.key}`)
       .then((response) => {
