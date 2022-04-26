@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './WeatherApp.scss'
-import axios from 'axios'
+// import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCloud, faCloudRain, faSun, faMoon, faCloudSun, faBoltLightning, faWind, faSnowflake, faCloudShowersHeavy } from '@fortawesome/free-solid-svg-icons';
 
@@ -54,12 +54,13 @@ const [data, setData] = useState({});
     base: "https://api.openweathermap.org/data/2.5/"
   }
 
-  async function searchWeather () {
-    // Get weather from api
-      await axios.get(`${api.base}weather?q=${city}&units=imperial&appid=${api.key}`)
-      .then((response) => {
-        setData(response.data);
-        console.log(response.data);
+  // Get weather from api
+ function searchWeather () {
+      fetch(`${api.base}weather?q=${city}&units=imperial&appid=${api.key}`)
+      .then(function(resp) { return resp.json() }) // Convert data to json
+      .then(function(data) {
+        console.log(data);
+        setData(data);
       })
       .catch(error => console.log(error))
       setCity('');
@@ -164,6 +165,15 @@ const [data, setData] = useState({});
 }
 
 /*
-
+ async function searchWeather () {
+    // Get weather from api
+      await axios.get(`${api.base}weather?q=${city}&units=imperial&appid=${api.key}`)
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch(error => console.log(error))
+      setCity('');
+  }
       
 */
