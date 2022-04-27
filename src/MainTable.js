@@ -10,15 +10,13 @@ import { CloseButton } from 'react-bootstrap';
 import { Trash, PencilSquare, PlusSquare } from 'react-bootstrap-icons';
 import './MainTable.scss';
 import { toggleEdit } from './reducers/EditModalSlice';
-import { addRow, deleteRow } from './reducers/NewRowSlice';
-import { saveRow } from './reducers/EditRowSlice';
+import { addRow, deleteRow, saveRow } from './reducers/NewRowSlice';
 import { v4 as uuidv4 } from 'uuid';
 
 
 export default function MainTable() {
     // Use dispatch declaration and modal state from redux
     const newRow = useSelector((state) => state.newRow);
-    const editRow = useSelector((state) => state.editRow);
     const isOpen = useSelector((state) => state.modal.value);
     const editIsOpen = useSelector((state) => state.editModal.value);
     const dispatch = useDispatch();
@@ -98,7 +96,6 @@ export default function MainTable() {
     }
     else{
     dispatch(toggleEdit());
-    getRowTotal();
      // Adds input data to row
     dispatch(saveRow({
         //rowNum: rowNumber,
@@ -110,6 +107,7 @@ export default function MainTable() {
         recomm: recommendation,
         total : totalRef.current,
     }));  
+    getRowTotal();
     setInputStyle({border: 'solid #ced4da 1px'});
     setTexValidationStyle({display: 'none'});
     }
@@ -151,7 +149,6 @@ export default function MainTable() {
         // loop over values
         for (let value of Object.values(newRow)) {
             if (rowCounter === rowIndex) {
-                // alert(JSON.stringify(value.fName)); 
                 setFirstName(value.fName);
                 setLastName(value.lName);
                 setCompanyTime(value.compTime);
@@ -166,16 +163,13 @@ export default function MainTable() {
     // Delete button in row
     const deleteIcon = () => {
         return (
-            <Trash className='delete' id='icon' style={{height:30, width:50}} onClick={e => openDeleteHandler(e)}/>
+          <Trash className='delete' id='icon' style={{height:30, width:50}} onClick={e => openDeleteHandler(e)}/>
     )};
 
     // Edit button in row
     const editIcon = () => {
         return(
-            <PencilSquare className='edit' id='icon' style={{height:30, width:50}} 
-            // onClick={editModalHandler}
-            onClick={e => openEditHandler(e)}
-            />
+          <PencilSquare className='edit' id='icon' style={{height:30, width:50}} onClick={e => openEditHandler(e)}/>
         )
     }
 

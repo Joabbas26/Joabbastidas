@@ -33,16 +33,17 @@ const NewRowSlice = createSlice({
                 recomm: action.payload.recomm,
                 total: action.payload.total,
             };
-            // const index = state.findIndex((row) =>
-            //     row.id === action.payload.id);
-                // state.splice(index, 1, updatedRow);
-            state.splice(state.indexOf(updatedRow), 1, updatedRow)
+            const index = state.findIndex((row) =>
+                row.id === action.payload.id);
+                state.splice(index, 1, updatedRow);
+            // state.splice(state.findIndex(updatedRow), 1, state.updatedRow)
+            // state.splice(state.indexOf(updatedRow), 1, updatedRow)
         },
     },
 });
 
 export default NewRowSlice.reducer;
-export const { addRow, deleteRow, saveRow} = NewRowSlice.actions;
+export const { addRow, deleteRow, saveRow } = NewRowSlice.actions;
 
 /*
     

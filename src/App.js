@@ -6,7 +6,7 @@ import store from "./store";
 import Nav from "./Nav.js";
 import Home from './Home.js';
 import Projects from './Projects.js';
-// import MainTable from './MainTable.js';
+import MainTable from './MainTable.js';
 import WeatherApp from './WeatherApp.js';
 import About from './About.js';
 import Contact from './Contact.js';
@@ -26,7 +26,7 @@ function App() {
                 <Route path='/projects' element={<Projects/>} /> 
                 <Route path='/about' element={<About/>} />
                 <Route path='/contact' element={<Contact/>} />
-                {/* <Route path='/mainTable' element={<MainTable/>} /> */}
+                <Route path='/mainTable' element={<MainTable/>} />
                 <Route path='/weather' element={<WeatherApp/>} />
           </Routes >
           <Footer/>
