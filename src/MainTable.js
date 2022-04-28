@@ -44,9 +44,8 @@ export default function MainTable() {
     // Handles deleting row
     const openDeleteHandler = (e) => {
         // Get index from tr id
-        // const rowIndex = Number(e.target.parentNode.parentNode.id);
-        dispatch(deleteRow( //{rowNum: rowIndex} 
-          ));  
+        const rowIndex = Number(e.target.parentNode.parentNode.id);
+        dispatch(deleteRow( {rowNum: rowIndex} ));  
     }
 
    
@@ -88,8 +87,7 @@ export default function MainTable() {
            totalRef.current = calcTotal;
   }
 
-  const handleEditSubmit = (e) => {
-    e.preventDefault();
+  const handleEditSubmit = () => {
     if(firstName === ''){
      // Add text description
      setInputStyle({border: 'solid red 1px'});
@@ -115,8 +113,7 @@ export default function MainTable() {
 }
 
    // Handles adding user data to table
-   const handleSubmit = (e) => {
-       e.preventDefault();
+   const handleSubmit = () => {
        if(firstName === ''){
         // Add text description
         setInputStyle({border: 'solid red 1px'});
