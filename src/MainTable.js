@@ -182,7 +182,7 @@ export default function MainTable() {
         </Modal.Header>
 
         <Modal.Body>
-            <Form onSubmit={handleEditSubmit} action="../../post" method="post">
+            <Form onSubmit={handleEditSubmit}>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridFirstName">
                     <Form.Label>First Name*</Form.Label>
@@ -243,7 +243,7 @@ export default function MainTable() {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Form onSubmit={handleSubmit} action="../../post" method="post">
+                    <Form onSubmit={handleSubmit}>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridFirstName">
                             <Form.Label>First Name*</Form.Label>
@@ -324,7 +324,7 @@ export default function MainTable() {
                                         <td>{row.oTime}</td>
                                         <td>{row.recomm}</td>
                                         <td>{row.total}</td>
-                                        {/* <td>{editIcon()}</td> */}
+                                        <td>{editIcon()}</td>
                                         <td>{deleteIcon()}</td>
                                     </tr>
                                 ))}
