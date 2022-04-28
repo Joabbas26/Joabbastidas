@@ -44,7 +44,8 @@ export default function MainTable() {
     // Handles deleting row
     const openDeleteHandler = (e) => {
         // Get index from tr id
-        const rowIndex = Number(e.target.parentNode.parentNode.id);
+        // const rowIndex = Number(e.target.parentNode.parentNode.id);
+        const rowIndex = 1;
         dispatch(deleteRow( {rowNum: rowIndex} ));  
     }
 
@@ -144,7 +145,8 @@ export default function MainTable() {
     // Handles edit of table row
     const openEditHandler = (e) => {
         editModalHandler();
-        const rowIndex = parseInt(e.target.parentNode.parentNode.id);
+        // const rowIndex = parseInt(e.target.parentNode.parentNode.id);
+        const rowIndex = 1;
         let rowCounter = 1;
         // loop over values
         for (let value of Object.values(newRow)) {
