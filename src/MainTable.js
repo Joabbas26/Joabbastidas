@@ -11,7 +11,7 @@ import { Trash, PencilSquare, PlusSquare } from 'react-bootstrap-icons';
 import './MainTable.scss';
 import { toggleEdit } from './reducers/EditModalSlice';
 import { addRow, deleteRow, saveRow } from './reducers/NewRowSlice';
-// import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 
 export default function MainTable() {
@@ -49,43 +49,43 @@ export default function MainTable() {
     }
 
    
-   const totalRef = useRef(0);
+  //  const totalRef = useRef(0);
 
-   const getRowTotal = () =>{
-       var calcTotal = 0;
-            // If comp time more than 50 get 30 points 
-            if (companyTime <= 10) {
-                calcTotal += 10;
-            } else if (companyTime > 10 && companyTime < 50) {
-                calcTotal += 20;
-            }else if (companyTime >= 50){
-                calcTotal += 30;
+  //  const getRowTotal = () =>{
+  //      var calcTotal = 0;
+  //           // If comp time more than 50 get 30 points 
+  //           if (companyTime <= 10) {
+  //               calcTotal += 10;
+  //           } else if (companyTime > 10 && companyTime < 50) {
+  //               calcTotal += 20;
+  //           }else if (companyTime >= 50){
+  //               calcTotal += 30;
                 
-            }
+  //           }
     
-            // If full time get 20 points 
-            if (fullTime === 'Yes') {
-                calcTotal += 20;
-            } else {
-                calcTotal += 10;
-            }
+  //           // If full time get 20 points 
+  //           if (fullTime === 'Yes') {
+  //               calcTotal += 20;
+  //           } else {
+  //               calcTotal += 10;
+  //           }
     
-            // If over time more than 5 get 30 points 
-            if (overTime < 5) {
-                calcTotal += 10;
-            } else {
-                calcTotal += 20;
-            }
+  //           // If over time more than 5 get 30 points 
+  //           if (overTime < 5) {
+  //               calcTotal += 10;
+  //           } else {
+  //               calcTotal += 20;
+  //           }
     
-            // Divide recommendation score by 10 and multiply  by 3 to get 30 points
-            if (recommendation <= 100) {
-                calcTotal += Math.floor((recommendation / 10) * 3);
-            } else {
-                calcTotal += 0;
-            }
-           // Sets ref to calculated total score
-           totalRef.current = calcTotal;
-  }
+  //           // Divide recommendation score by 10 and multiply  by 3 to get 30 points
+  //           if (recommendation <= 100) {
+  //               calcTotal += Math.floor((recommendation / 10) * 3);
+  //           } else {
+  //               calcTotal += 0;
+  //           }
+  //          // Sets ref to calculated total score
+  //          totalRef.current = calcTotal;
+  // }
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
@@ -105,9 +105,9 @@ export default function MainTable() {
         fTime : fullTime,
         oTime : overTime,
         recomm: recommendation,
-        total : totalRef.current,
+        total : 1 //totalRef.current,
     }));  
-    getRowTotal();
+    // getRowTotal();
     setInputStyle({border: 'solid #ced4da 1px'});
     setTexValidationStyle({display: 'none'});
     }
@@ -123,7 +123,7 @@ export default function MainTable() {
        }
        else{
         dispatch(toggle());
-        getRowTotal();
+        // getRowTotal();
         // Adds input data to row
        dispatch(addRow({
            //rowNum: rowNumber,
@@ -133,7 +133,7 @@ export default function MainTable() {
            fTime : fullTime,
            oTime : overTime,
            recomm: recommendation,
-           total : totalRef.current,
+           total : 1 //totalRef.current,
        }));  
        setInputStyle({border: 'solid #ced4da 1px'});
        setTexValidationStyle({display: 'none'});
@@ -315,7 +315,7 @@ export default function MainTable() {
                             </thead>
                             <tbody>
                                 {newRow.map((row, index) => (
-                                    <tr key={this.id} id={index+1}>
+                                    <tr key={uuidv4()} id={index+1}>
                                         <td>{index+1}</td>
                                         <td>{row.fName}</td>
                                         <td>{row.lName}</td>
