@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+// import { createSlice } from "@reduxjs/toolkit";
 
-const rootReducer = createSlice({
-    name: 'reducer',
-    initialState: true,
-})
+// const rootReducer = createSlice({
+//     name: 'reducer',
+//     initialState: true,
+// })
 
-export default rootReducer.reducer;
+// export default rootReducer.reducer;
