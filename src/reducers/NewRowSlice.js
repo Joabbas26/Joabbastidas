@@ -6,7 +6,7 @@ const NewRowSlice = createSlice({
     reducers: {
         addRow: (state, action) => {
             const newRow = {
-                rowNum: action.payload.rowNum,
+                // rowNum: action.payload.rowNum,
                 fName: action.payload.fName, 
                 lName: action.payload.lName,
                 compTime: action.payload.compTime,
@@ -24,7 +24,7 @@ const NewRowSlice = createSlice({
             },
         saveRow: (state, action) => {
             const updatedRow = {
-                rowNum: action.payload.rowNum,
+                // rowNum: action.payload.rowNum,
                 fName: action.payload.fName, 
                 lName: action.payload.lName,
                 compTime: action.payload.compTime,
