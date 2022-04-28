@@ -44,7 +44,7 @@ export default function MainTable() {
     // Handles deleting row
     const openDeleteHandler = (e) => {
         // Get index from tr id
-        const rowIndex = Number(e.target.parentNode.parentNode.id);
+        // const rowIndex = Number(e.target.parentNode.parentNode.id);
         dispatch(deleteRow( //{rowNum: rowIndex} 
           ));  
     }
