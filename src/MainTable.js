@@ -231,7 +231,8 @@ export default function MainTable() {
         </Modal.Body>
 
         <Modal.Footer>
-            <Button variant="primary" type="submit" onClick={handleEditSubmit}>Save</Button>
+            {/* <Button variant="primary" type="submit" onClick={handleEditSubmit}>Save</Button> */}
+            <Button variant="primary" type="submit" >Save</Button>
         </Modal.Footer>
     </Modal>
 
@@ -292,7 +293,8 @@ export default function MainTable() {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="primary" type="submit" onClick={handleSubmit}>Save</Button>
+                    {/* <Button variant="primary" type="submit" onClick={handleSubmit}>Save</Button> */}
+                    <Button variant="primary" type="submit">Save</Button>
                 </Modal.Footer>
             </Modal>
 
