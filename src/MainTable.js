@@ -324,8 +324,8 @@ export default function MainTable() {
                                         <td>{row.oTime}</td>
                                         <td>{row.recomm}</td>
                                         <td>{row.total}</td>
-                                        <td>{editIcon()}</td>
-                                        {/* <td>{deleteIcon()}</td> */}
+                                        {/* <td>{editIcon()}</td> */}
+                                        <td>{deleteIcon()}</td>
                                     </tr>
                                 ))}
                             </tbody>
