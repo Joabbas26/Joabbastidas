@@ -45,7 +45,8 @@ export default function MainTable() {
     const openDeleteHandler = (e) => {
         // Get index from tr id
         const rowIndex = Number(e.target.parentNode.parentNode.id);
-        dispatch(deleteRow( {rowNum: rowIndex} ));  
+        dispatch(deleteRow( //{rowNum: rowIndex} 
+          ));  
     }
 
    
@@ -182,8 +183,7 @@ export default function MainTable() {
         </Modal.Header>
 
         <Modal.Body>
-        {/* <Form onSubmit={handleEditSubmit}> */}
-            <Form >
+        <Form onSubmit={handleEditSubmit}>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridFirstName">
                     <Form.Label>First Name*</Form.Label>
@@ -244,8 +244,7 @@ export default function MainTable() {
                 </Modal.Header>
 
                 <Modal.Body>
-                    {/* <Form onSubmit={handleSubmit}> */}
-                    <Form >
+                    <Form onSubmit={handleSubmit}>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridFirstName">
                             <Form.Label>First Name*</Form.Label>
