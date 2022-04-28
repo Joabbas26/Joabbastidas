@@ -49,43 +49,43 @@ export default function MainTable() {
     }
 
    
-  //  const totalRef = useRef(0);
+   const totalRef = useRef(0);
 
-  //  const getRowTotal = () =>{
-  //      var calcTotal = 0;
-  //           // If comp time more than 50 get 30 points 
-  //           if (companyTime <= 10) {
-  //               calcTotal += 10;
-  //           } else if (companyTime > 10 && companyTime < 50) {
-  //               calcTotal += 20;
-  //           }else if (companyTime >= 50){
-  //               calcTotal += 30;
+   const getRowTotal = () =>{
+       var calcTotal = 0;
+            // If comp time more than 50 get 30 points 
+            if (companyTime <= 10) {
+                calcTotal += 10;
+            } else if (companyTime > 10 && companyTime < 50) {
+                calcTotal += 20;
+            }else if (companyTime >= 50){
+                calcTotal += 30;
                 
-  //           }
+            }
     
-  //           // If full time get 20 points 
-  //           if (fullTime === 'Yes') {
-  //               calcTotal += 20;
-  //           } else {
-  //               calcTotal += 10;
-  //           }
+            // If full time get 20 points 
+            if (fullTime === 'Yes') {
+                calcTotal += 20;
+            } else {
+                calcTotal += 10;
+            }
     
-  //           // If over time more than 5 get 30 points 
-  //           if (overTime < 5) {
-  //               calcTotal += 10;
-  //           } else {
-  //               calcTotal += 20;
-  //           }
+            // If over time more than 5 get 30 points 
+            if (overTime < 5) {
+                calcTotal += 10;
+            } else {
+                calcTotal += 20;
+            }
     
-  //           // Divide recommendation score by 10 and multiply  by 3 to get 30 points
-  //           if (recommendation <= 100) {
-  //               calcTotal += Math.floor((recommendation / 10) * 3);
-  //           } else {
-  //               calcTotal += 0;
-  //           }
-  //          // Sets ref to calculated total score
-  //          totalRef.current = calcTotal;
-  // }
+            // Divide recommendation score by 10 and multiply  by 3 to get 30 points
+            if (recommendation <= 100) {
+                calcTotal += Math.floor((recommendation / 10) * 3);
+            } else {
+                calcTotal += 0;
+            }
+           // Sets ref to calculated total score
+           totalRef.current = calcTotal;
+  }
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
@@ -105,9 +105,9 @@ export default function MainTable() {
         fTime : fullTime,
         oTime : overTime,
         recomm: recommendation,
-        total : 1 //totalRef.current,
+        total : totalRef.current,
     }));  
-    // getRowTotal();
+    getRowTotal();
     setInputStyle({border: 'solid #ced4da 1px'});
     setTexValidationStyle({display: 'none'});
     }
@@ -123,7 +123,7 @@ export default function MainTable() {
        }
        else{
         dispatch(toggle());
-        // getRowTotal();
+        getRowTotal();
         // Adds input data to row
        dispatch(addRow({
            //rowNum: rowNumber,
@@ -133,7 +133,7 @@ export default function MainTable() {
            fTime : fullTime,
            oTime : overTime,
            recomm: recommendation,
-           total : 1 //totalRef.current,
+           total : totalRef.current,
        }));  
        setInputStyle({border: 'solid #ced4da 1px'});
        setTexValidationStyle({display: 'none'});
@@ -147,17 +147,17 @@ export default function MainTable() {
         const rowIndex = parseInt(e.target.parentNode.parentNode.id);
         let rowCounter = 1;
         // loop over values
-        for (let value of Object.values(newRow)) {
-            if (rowCounter === rowIndex) {
-                setFirstName(value.fName);
-                setLastName(value.lName);
-                setCompanyTime(value.compTime);
-                setOverTime(value.oTime);
-                setFullTime(value.fTime);
-                setRecommendation(value.recomm);
-            }
-            rowCounter += 1;
-        }
+        // for (let value of Object.values(newRow)) {
+        //     if (rowCounter === rowIndex) {
+        //         setFirstName(value.fName);
+        //         setLastName(value.lName);
+        //         setCompanyTime(value.compTime);
+        //         setOverTime(value.oTime);
+        //         setFullTime(value.fTime);
+        //         setRecommendation(value.recomm);
+        //     }
+        //     rowCounter += 1;
+        // }
     }
 
     // Delete button in row
