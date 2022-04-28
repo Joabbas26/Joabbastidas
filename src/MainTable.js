@@ -147,17 +147,17 @@ export default function MainTable() {
         const rowIndex = parseInt(e.target.parentNode.parentNode.id);
         let rowCounter = 1;
         // loop over values
-        // for (let value of Object.values(newRow)) {
-        //     if (rowCounter === rowIndex) {
-        //         setFirstName(value.fName);
-        //         setLastName(value.lName);
-        //         setCompanyTime(value.compTime);
-        //         setOverTime(value.oTime);
-        //         setFullTime(value.fTime);
-        //         setRecommendation(value.recomm);
-        //     }
-        //     rowCounter += 1;
-        // }
+        for (let value of Object.values(newRow)) {
+            if (rowCounter === rowIndex) {
+                setFirstName(value.fName);
+                setLastName(value.lName);
+                setCompanyTime(value.compTime);
+                setOverTime(value.oTime);
+                setFullTime(value.fTime);
+                setRecommendation(value.recomm);
+            }
+            rowCounter += 1;
+        }
     }
 
     // Delete button in row
@@ -325,7 +325,7 @@ export default function MainTable() {
                                         <td>{row.recomm}</td>
                                         <td>{row.total}</td>
                                         <td>{editIcon()}</td>
-                                        <td>{deleteIcon()}</td>
+                                        {/* <td>{deleteIcon()}</td> */}
                                     </tr>
                                 ))}
                             </tbody>
