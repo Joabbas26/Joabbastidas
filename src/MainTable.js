@@ -182,7 +182,8 @@ export default function MainTable() {
         </Modal.Header>
 
         <Modal.Body>
-            <Form onSubmit={handleEditSubmit}>
+        {/* <Form onSubmit={handleEditSubmit}> */}
+            <Form >
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridFirstName">
                     <Form.Label>First Name*</Form.Label>
@@ -231,8 +232,7 @@ export default function MainTable() {
         </Modal.Body>
 
         <Modal.Footer>
-            {/* <Button variant="primary" type="submit" onClick={handleEditSubmit}>Save</Button> */}
-            <Button variant="primary" type="submit" >Save</Button>
+            <Button variant="primary" type="submit" onClick={handleEditSubmit}>Save</Button>
         </Modal.Footer>
     </Modal>
 
@@ -244,7 +244,8 @@ export default function MainTable() {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Form onSubmit={handleSubmit}>
+                    {/* <Form onSubmit={handleSubmit}> */}
+                    <Form >
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridFirstName">
                             <Form.Label>First Name*</Form.Label>
@@ -293,8 +294,7 @@ export default function MainTable() {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    {/* <Button variant="primary" type="submit" onClick={handleSubmit}>Save</Button> */}
-                    <Button variant="primary" type="submit">Save</Button>
+                    <Button variant="primary" type="submit" onClick={handleSubmit}>Save</Button>
                 </Modal.Footer>
             </Modal>
 
