@@ -22,6 +22,7 @@ export default function MainTable() {
     const dispatch = useDispatch();
 
     // Hooks for all row values
+    const [rowNumber, setRowNumber] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [companyTime, setCompanyTime] = useState('');
@@ -43,6 +44,7 @@ export default function MainTable() {
 
     // Handles deleting row
     const openDeleteHandler = (e) => {
+      e.preventDefault();
         // Get index from tr id
         const rowIndex = Number(e.target.parentNode.parentNode.id);
         dispatch(deleteRow( {rowNum: rowIndex} ));  
@@ -97,7 +99,7 @@ export default function MainTable() {
     dispatch(toggleEdit());
      // Adds input data to row
     dispatch(saveRow({
-        //rowNum: rowNumber,
+        rowNum: rowNumber,
         fName : firstName,
         lName : lastName, 
         compTime : companyTime, 
@@ -124,7 +126,7 @@ export default function MainTable() {
         getRowTotal();
         // Adds input data to row
        dispatch(addRow({
-           //rowNum: rowNumber,
+           rowNum: rowNumber,
            fName : firstName,
            lName : lastName, 
            compTime : companyTime, 
@@ -141,6 +143,7 @@ export default function MainTable() {
 
     // Handles edit of table row
     const openEditHandler = (e) => {
+      e.preventDefault();
         editModalHandler();
         const rowIndex = parseInt(e.target.parentNode.parentNode.id);
         let rowCounter = 1;
