@@ -22,7 +22,6 @@ export default function MainTable() {
     const dispatch = useDispatch();
 
     // Hooks for all row values
-    const [rowNumber, setRowNumber] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [companyTime, setCompanyTime] = useState('');
@@ -99,7 +98,7 @@ export default function MainTable() {
     dispatch(toggleEdit());
      // Adds input data to row
     dispatch(saveRow({
-        rowNum: rowNumber,
+        // rowNum: rowNumber,
         fName : firstName,
         lName : lastName, 
         compTime : companyTime, 
@@ -126,7 +125,7 @@ export default function MainTable() {
         getRowTotal();
         // Adds input data to row
        dispatch(addRow({
-           rowNum: rowNumber,
+          //  rowNum: rowNumber,
            fName : firstName,
            lName : lastName, 
            compTime : companyTime, 
