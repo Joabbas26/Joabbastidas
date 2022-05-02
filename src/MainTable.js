@@ -22,7 +22,6 @@ export default function MainTable() {
     const dispatch = useDispatch();
 
     // Hooks for all row values
-    const [rowNumber, setRowNumber] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [companyTime, setCompanyTime] = useState('');
@@ -46,11 +45,11 @@ export default function MainTable() {
     const openDeleteHandler = (e) => {
       e.preventDefault();
         // Get index from tr id
-        const rowIndex = Number(e.target.parentNode.parentNode.id);
+        const rowIndex = parseInt(e.target.parentNode.parentNode.id);
         dispatch(deleteRow( {rowNum: rowIndex} ));  
     }
 
-   
+   // Ref for calculating total
    const totalRef = useRef(0);
 
    const getRowTotal = () =>{
@@ -99,7 +98,7 @@ export default function MainTable() {
     dispatch(toggleEdit());
      // Adds input data to row
     dispatch(saveRow({
-        // rowNum: rowIndex,
+        // rowNum: rowNumber,
         fName : firstName,
         lName : lastName, 
         compTime : companyTime, 
@@ -112,7 +111,6 @@ export default function MainTable() {
     setInputStyle({border: 'solid #ced4da 1px'});
     setTexValidationStyle({display: 'none'});
     }
-    setRowNumber('');
 }
 
    // Handles adding user data to table
@@ -127,7 +125,7 @@ export default function MainTable() {
         getRowTotal();
         // Adds input data to row
        dispatch(addRow({
-           rowNum: rowNumber,
+        //    rowNum: rowNumber,
            fName : firstName,
            lName : lastName, 
            compTime : companyTime, 
@@ -144,18 +142,16 @@ export default function MainTable() {
     // Handles edit of table row
     const openEditHandler = (e) => {
         editModalHandler();
-        // const rowNumber = parseInt(e.target.parentNode.parentNode.id);
-        setRowNumber(parseInt(e.target.parentNode.parentNode.id));
-        alert(rowNumber);
+        const rowIndex = parseInt(e.target.parentNode.parentNode.id);
         let rowCounter = 1;
         // loop over values
         for (let value of Object.values(newRow)) {
-            if (rowCounter === rowNumber) {
+            if (rowCounter === rowIndex) {
                 setFirstName(value.fName);
                 setLastName(value.lName);
                 setCompanyTime(value.compTime);
-                setOverTime(value.oTime);
                 setFullTime(value.fTime);
+                setOverTime(value.oTime);
                 setRecommendation(value.recomm);
             }
             rowCounter += 1;
@@ -317,7 +313,7 @@ export default function MainTable() {
                             </thead>
                             <tbody>
                                 {newRow.map((row, index) => (
-                                    <tr key={uuidv4()} id={index+1}>
+                                    <tr key={uuidv4()} id={index}>
                                         <td>{index+1}</td>
                                         <td>{row.fName}</td>
                                         <td>{row.lName}</td>
