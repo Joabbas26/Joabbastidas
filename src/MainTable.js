@@ -22,6 +22,7 @@ export default function MainTable() {
     const dispatch = useDispatch();
 
     // Hooks for all row values
+    const [rowNumber, setRowNumber] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [companyTime, setCompanyTime] = useState('');
@@ -42,7 +43,7 @@ export default function MainTable() {
     }
 
     // Handles deleting row
-    const openDeleteHandler = (e) => {
+    function openDeleteHandler (e) {
       e.preventDefault();
         // Get index from tr id
         const rowIndex = parseInt(e.target.parentNode.parentNode.id);
@@ -98,7 +99,7 @@ export default function MainTable() {
     dispatch(toggleEdit());
      // Adds input data to row
     dispatch(saveRow({
-        // rowNum: rowNumber,
+        rowNum: rowNumber,
         fName : firstName,
         lName : lastName, 
         compTime : companyTime, 
@@ -124,7 +125,7 @@ export default function MainTable() {
         dispatch(toggle());
         getRowTotal();
         // Adds input data to row
-       dispatch(addRow({
+        dispatch(addRow({
         //    rowNum: rowNumber,
            fName : firstName,
            lName : lastName, 
@@ -143,6 +144,8 @@ export default function MainTable() {
     const openEditHandler = (e) => {
         editModalHandler();
         const rowIndex = parseInt(e.target.parentNode.parentNode.id);
+        setRowNumber(rowIndex);
+        alert(rowIndex);
         let rowCounter = 1;
         // loop over values
         for (let value of Object.values(newRow)) {
@@ -161,13 +164,13 @@ export default function MainTable() {
     // Delete button in row
     const deleteIcon = () => {
         return (
-          <Trash className='delete' id='icon' style={{height:30, width:50}} onClick={e => openDeleteHandler(e)}/>
+          <Trash className='delete' id='icon' style={{height:30, width:50}} onClick={openDeleteHandler}/>
     )};
 
     // Edit button in row
     const editIcon = () => {
         return(
-          <PencilSquare className='edit' id='icon' style={{height:30, width:50}} onClick={e => openEditHandler(e)}/>
+          <PencilSquare className='edit' id='icon' style={{height:30, width:50}} onClick={openEditHandler}/>
         )
     }
 
@@ -313,7 +316,7 @@ export default function MainTable() {
                             </thead>
                             <tbody>
                                 {newRow.map((row, index) => (
-                                    <tr key={uuidv4()} id={index}>
+                                    <tr key={uuidv4()} id={index+1}>
                                         <td>{index+1}</td>
                                         <td>{row.fName}</td>
                                         <td>{row.lName}</td>
