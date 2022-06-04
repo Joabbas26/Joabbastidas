@@ -145,7 +145,6 @@ export default function MainTable() {
         editModalHandler();
         const rowIndex = parseInt(e.target.parentNode.parentNode.id);
         setRowNumber(rowIndex);
-        alert(rowIndex);
         let rowCounter = 1;
         // loop over values
         for (let value of Object.values(newRow)) {
