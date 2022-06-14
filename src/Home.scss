@@ -16,7 +16,7 @@
 #grayTextDiv{
   background-color: #798086;
   border-radius: 10px;
-  max-height: 60vh;
+  // max-height: 60vh;
   max-width: 80rem;
   margin: 0 auto;
   padding: 5rem 2rem;
@@ -25,6 +25,7 @@
 #circleDiv{
   text-align: center;
   padding: 0;
+  margin-bottom: 3rem;
 }
 
 #circleImage{
@@ -316,7 +317,7 @@
 
 @media screen and (max-width: 575px) {
   #textsDiv{
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     column-gap: 10rem;
   }
