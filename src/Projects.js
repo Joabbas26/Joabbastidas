@@ -14,7 +14,7 @@ export default function Projects() {
       <p className='projectTitle' id='webDevSection'>Full Stack</p>
       <div className='container' id='projectsSection'>
         <div className='row'>
-          <div className='col' id='card'>
+          <div className='col-md-6 col-sm-12' id='card'>
           <Link to="/mainTable"><img className='img-fluid' id='projectImage' src={employeeTable} 
           alt="projectImage"/></Link>
           <div className="card-body">
@@ -22,7 +22,7 @@ export default function Projects() {
             <p className="card-text">Open a modal and add data to a table. Perform calculation based on data. Able to delete rows and edit data.</p>
           </div>
         </div>
-        <div className='col' id='card'>
+        <div className='col-md-6 col-sm-12' id='card'>
         <Link to="/weather"><img className='img-fluid' id='projectImage' src={weatherApp} 
           alt="projectImage"/></Link>
           <div className="card-body">

@@ -46,7 +46,7 @@ export default function Contact() {
               <button className='btn btn-primary' id='submitButton' onClick={handleSubmit}>Submit</button>
             </form>
           </div>
-          <div className='col-md-4'>
+          <div className='col-md-4' id='contactInfoDiv'>
             <p className='contactInfo'>Contact Info</p>
             <div className='emailInfo'>
                 <FontAwesomeIcon icon={faEnvelope} />

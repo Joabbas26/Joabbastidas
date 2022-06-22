@@ -19,6 +19,10 @@
     margin-bottom: 5rem;
 }
 
+.aboutDiv{
+    background-color: black;
+}
+
 #currentProjects, #selfDescription{
     text-align: center;
     color: white;
@@ -39,5 +43,9 @@
 @media screen and (max-width: 768px) {
     #currentProjects, #selfDescription{
       padding: 3rem;
+    }
+
+    .circle{
+        height: 10rem;
     }
   }

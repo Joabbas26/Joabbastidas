@@ -33,7 +33,9 @@ export default function Nav() {
             <NavLink to="/" className="brand">Joab Bastidas</NavLink>
             <nav>
                 <div className="nav-mobile">
-                    <button id="nav-toggle" onClick={toggleNav}><span></span></button>
+                    <button id="nav-toggle" onClick={toggleNav}>
+                      <span></span>
+                      </button>
                 </div>
                 {(toggleMenu || screenWidth > 500) && (
                 <ul className="nav-list" style={navStyle}>
