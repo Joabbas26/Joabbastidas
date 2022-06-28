@@ -25,7 +25,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className='artText' onClick={event =>  window.location.href='/projects#artSection'}>Artist</p>
-                <p className= 'gamesText' onClick={event =>  window.location.href='/projects#gamesSection'}>Games</p>
+                <p className= 'gamesText' onClick={event =>  window.location.href='/projects#gamesSection'}>Apps</p>
                 <p className='mangaText' onClick={event =>  window.location.href='/projects#mangaSection'}> 漫画 </p>
                 <p className='novelText anim-typewriter' onClick={event =>  window.location.href='/projects#booksSection'}>Novelist</p>
               </div>

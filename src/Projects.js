@@ -42,7 +42,7 @@ export default function Projects() {
       </div>
 
       {/* Game projects */}
-      <p className='projectTitle' id='gamesSection'>Games</p>
+      <p className='projectTitle' id='gamesSection'>Apps</p>
       <div className='container' id='projectsSection'>
         <div className='row'>
           <div className='col-md-6'>
